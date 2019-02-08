@@ -13,7 +13,7 @@ export default (startMessage, gameStep) => {
     console.log(`Question: ${step[0]}`);
     const answer = readlineSync.question('Your answer: ');
     if (answer !== step[1]) {
-      console.log(`'${answer}' is wrong answer;(. Correct answer was '${gameStep[1]}'.`);
+      console.log(`'${answer}' is wrong answer;(. Correct answer was '${step[1]}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
