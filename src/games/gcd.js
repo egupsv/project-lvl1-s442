@@ -1,4 +1,5 @@
-import { getRandomInt, game } from '..';
+import game from '..';
+import getRandomInt from '../utils';
 
 const denoms = (n) => {
   const iter = (acc, counter) => {
@@ -12,19 +13,16 @@ const denoms = (n) => {
   };
   return iter([], 1);
 };
-
+const maxDenom = (n1, n2) => denoms(n1)
+  .filter(e => denoms(n2).includes(e))
+  .reduce((acc, e) => e, 0);
+const startMessage = 'Find the greatest common divisor of given numbers.';
 const gcd = () => {
-  const startMessage = 'Find the greatest common divisor of given numbers.';
   const gameStep = () => {
     const num1 = getRandomInt();
     const num2 = getRandomInt();
-    const denoms1 = denoms(num1);
-    const denoms2 = denoms(num2);
-    const maxDenom = denoms1
-      .filter(e => denoms2.includes(e))
-      .reduce((acc, e) => e, 0);
     const question = `${num1} ${num2}`;
-    const getRightAnswer = String(maxDenom);
+    const getRightAnswer = String(maxDenom(num1, num2));
     return [question, getRightAnswer];
   };
   return game(startMessage, gameStep);
