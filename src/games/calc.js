@@ -14,17 +14,15 @@ const expression = (n1, n2, operator) => {
 };
 
 const startMessage = 'What is the result of the expression?';
-const calc = () => {
-  const gameStep = () => {
-    const num1 = getRandomInt();
-    const num2 = getRandomInt();
-    const operatorNum = getRandomInt(0, operators.length);
-    const operator = operators[operatorNum];
-    const question = `${num1} ${operator} ${num2}`;
-    const rightAnswer = `${expression(num1, num2, operator)}`;
-    return [question, rightAnswer];
-  };
-  return game(startMessage, gameStep);
+const gameStep = () => {
+  const num1 = getRandomInt();
+  const num2 = getRandomInt();
+  const operatorNum = getRandomInt(0, operators.length);
+  const operator = operators[operatorNum];
+  const question = `${num1} ${operator} ${num2}`;
+  const rightAnswer = `${expression(num1, num2, operator)}`;
+  return [question, rightAnswer];
 };
+const calc = () => game(startMessage, gameStep);
 
 export default calc;
