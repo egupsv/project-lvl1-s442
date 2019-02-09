@@ -3,10 +3,13 @@ import getRandomInt from '../utils';
 
 const isPrime = (n) => {
   const iter = (counter) => {
-    if (counter > n / 2 && n !== 1) {
+    if (n <= 1) {
+      return false;
+    }
+    if (counter > n / 2) {
       return true;
     }
-    if (n % counter === 0 || n === 1) {
+    if (n % counter === 0) {
       return false;
     }
     return iter(counter + 1);
