@@ -9,11 +9,11 @@ export default (startMessage, gameStep) => {
   console.log(`Hello, ${userName}`);
   console.log('');
   for (let stepNum = 1; stepNum <= amountOfSteps; stepNum += 1) {
-    const step = gameStep();
-    console.log(`Question: ${step[0]}`);
+    const [question, rightAnswer] = gameStep();
+    console.log(`Question: ${question}`);
     const answer = readlineSync.question('Your answer: ');
-    if (answer !== step[1]) {
-      console.log(`'${answer}' is wrong answer;(. Correct answer was '${step[1]}'.`);
+    if (answer !== rightAnswer) {
+      console.log(`'${answer}' is wrong answer;(. Correct answer was '${rightAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }

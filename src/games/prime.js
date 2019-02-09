@@ -2,17 +2,18 @@ import game from '..';
 import getRandomInt from '../utils';
 
 const isPrime = (n) => {
-  const iter = (acc, counter) => {
-    if (counter > n / 2) {
-      return [...acc];
+  const iter = (counter) => {
+    if (counter > n / 2 && n !== 1) {
+      return true;
     }
-    if (n % counter === 0) {
-      return iter([...acc, counter], counter + 1);
+    if (n % counter === 0 || n === 1) {
+      return false;
     }
-    return iter(acc, counter + 1);
+    return iter(counter + 1);
   };
-  return iter([], 1).length === 1;
+  return iter(2);
 };
+
 const startMessage = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const gameStep = () => {
   const num = getRandomInt();
@@ -20,6 +21,5 @@ const gameStep = () => {
   const getRightAnswer = isPrime(num) ? 'yes' : 'no';
   return [question, getRightAnswer];
 };
-const prime = () => game(startMessage, gameStep);
 
-export default prime;
+export default () => game(startMessage, gameStep);
