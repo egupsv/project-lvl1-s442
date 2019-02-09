@@ -2,10 +2,10 @@ import game from '..';
 import getRandomInt from '../utils';
 
 const isPrime = (n) => {
+  if (n <= 1) {
+    return false;
+  }
   const iter = (counter) => {
-    if (n <= 1) {
-      return false;
-    }
     if (counter > n / 2) {
       return true;
     }
